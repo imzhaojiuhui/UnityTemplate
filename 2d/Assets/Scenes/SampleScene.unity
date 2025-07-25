@@ -150,6 +150,23 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &335491838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335491832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1c9e23e8674f199b61ca2f41103d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestData:
+    TestInt: 0
+    TestFloat: 0
+    TestString: 
+    TestList: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

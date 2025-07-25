@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HollowMask : Graphic,ICanvasRaycastFilter, IPointerClickHandler
 {
     
-    public static HollowMask Instance;
+    // public static HollowMask Instance;
     
     //public RectTransform clickTipsEff;
     public RectTransform target;
@@ -20,7 +20,7 @@ public class HollowMask : Graphic,ICanvasRaycastFilter, IPointerClickHandler
     protected new void Awake()
     {
         base.Awake();
-        Instance = this;
+        // Instance = this;
     }
 
     public void Play(RectTransform pointTarget)

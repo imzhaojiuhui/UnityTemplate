@@ -14,8 +14,9 @@ namespace ProjectX
         private static readonly string AesIv = "asjkdyweucn";
         private static readonly bool IsEncry = true;
 
-        public static bool SerializeJson(string path, object obj)
+        public static bool SerializeJson(string fileName, object obj)
         {
+            var path = GetFilePath(fileName);
             if (string.IsNullOrEmpty(path))
             {
                 Debug.LogError("SerializeJson Without Valid Path.");
@@ -62,8 +63,9 @@ namespace ProjectX
             return true;
         }
 
-        public static T DeserializeJson<T>(string path)
+        public static T DeserializeJson<T>(string fileName)
         {
+            var path = GetFilePath(fileName);
             if (string.IsNullOrEmpty(path))
             {
                 Debug.LogError("DeserializeJson Without Valid Path.");
@@ -116,6 +118,38 @@ namespace ProjectX
             Debug.LogError("DeserializeJson Failed!");
             return default(T);
         }
+        
+        public static string GetFilePath(string fileName)
+        {
+            // if (ENCRY)
+            // {
+            fileName = fileName.GetHashCode().ToString();
+            // }
+            return string.Format("{0}{1}", persistentDataPath4Recorder, fileName);
+        }
+        
+        private static string m_PersistentDataPath4Recorder;
+        // 外部资源目录
+        public static string persistentDataPath4Recorder
+        {
+            get
+            {
+                if (null == m_PersistentDataPath4Recorder)
+                {
+                    m_PersistentDataPath4Recorder = Application.persistentDataPath + "/cache/";
 
+                    if (!Directory.Exists(m_PersistentDataPath4Recorder))
+                    {
+                        Directory.CreateDirectory(m_PersistentDataPath4Recorder);
+#if UNITY_IPHONE && !UNITY_EDITOR
+                        UnityEngine.iOS.Device.SetNoBackupFlag(m_PersistentDataPath4Recorder);
+#endif
+                    }
+                }
+
+                return m_PersistentDataPath4Recorder;
+            }
+        }
+        
     }
 }
